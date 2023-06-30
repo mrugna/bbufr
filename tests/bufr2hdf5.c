@@ -599,7 +599,7 @@ static int our_callback (varfl val, int ind) {
 	    }
 	    {
 	      varfl val = vv[i++];
-	      assert(val == 90);
+	      assert(val == 90 || val == 253 );
 	    }
 
 	    /* where */
@@ -621,12 +621,26 @@ static int our_callback (varfl val, int ind) {
 	      /* what */
 	      if (param == 0) {
 		p->dataset_what.quantity = "DBZH";
-	      } else if (param == 40) {
+              } else if (param == 233) {
+                p->dataset_what.quantity = "DBZV";
+	      } else if (param == 40 || param == 41) {
 		p->dataset_what.quantity = "VRAD";
-	      } else if (param == 91) {
+              } else if(param == 92 || param == 60 || param == 236) {
+                p->dataset_what.quantity = "WRAD";
+              } else if (param == 80) {
+                p->dataset_what.quantity = "ZDR";
+	      } else if (param == 91 || param == 230) {
 		p->dataset_what.quantity = "TH";
-	      } else if(param == 92) {
-		p->dataset_what.quantity = "WRAD";
+	      } else if (param == 243) {
+		p->dataset_what.quantity = "CM";
+	      } else if (param == 240) {
+		p->dataset_what.quantity = "KDP";
+	      } else if (param == 239) {
+		p->dataset_what.quantity = "PHIDP";
+	      } else if (param == 241) {
+		p->dataset_what.quantity = "RHOHV";
+	      } else if (param == 231) {
+		p->dataset_what.quantity = "TV";
 	      } else {
 		p->dataset_what.quantity = "XXXX";
 		fprintf(stderr, "unknown quantity %d\n", param);
